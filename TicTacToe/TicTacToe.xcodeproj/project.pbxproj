@@ -9,10 +9,8 @@
 /* Begin PBXBuildFile section */
 		410336672AF97AC900338414 /* TicTacToeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410336662AF97AC900338414 /* TicTacToeApp.swift */; };
 		410336692AF97AC900338414 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410336682AF97AC900338414 /* ContentView.swift */; };
-		4103366B2AF97AC900338414 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4103366A2AF97AC900338414 /* Item.swift */; };
 		4103366D2AF97ACC00338414 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4103366C2AF97ACC00338414 /* Assets.xcassets */; };
 		410336702AF97ACC00338414 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4103366F2AF97ACC00338414 /* Preview Assets.xcassets */; };
-		410736F72B014B9200E931F9 /* TicTacToeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410736F62B014B9200E931F9 /* TicTacToeTests.swift */; };
 		410736FD2B014BF600E931F9 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4191F3EA2B01227E0081DED3 /* Game.swift */; };
 		410736FF2B014C4800E931F9 /* GameTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410736FE2B014C4800E931F9 /* GameTests.swift */; };
 		4191F3EB2B01227E0081DED3 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4191F3EA2B01227E0081DED3 /* Game.swift */; };
@@ -32,13 +30,11 @@
 		410336632AF97AC900338414 /* TicTacToe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TicTacToe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		410336662AF97AC900338414 /* TicTacToeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicTacToeApp.swift; sourceTree = "<group>"; };
 		410336682AF97AC900338414 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		4103366A2AF97AC900338414 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		4103366C2AF97ACC00338414 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4103366F2AF97ACC00338414 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		410336712AF97ACC00338414 /* TicTacToe.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TicTacToe.entitlements; sourceTree = "<group>"; };
 		410336722AF97ACC00338414 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		410736F42B014B9100E931F9 /* TicTacToeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TicTacToeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		410736F62B014B9200E931F9 /* TicTacToeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicTacToeTests.swift; sourceTree = "<group>"; };
 		410736FE2B014C4800E931F9 /* GameTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameTests.swift; sourceTree = "<group>"; };
 		410737002B014C7C00E931F9 /* TicTacToe.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = TicTacToe.xctestplan; sourceTree = "<group>"; };
 		4191F3EA2B01227E0081DED3 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
@@ -86,7 +82,6 @@
 			children = (
 				410336662AF97AC900338414 /* TicTacToeApp.swift */,
 				410336682AF97AC900338414 /* ContentView.swift */,
-				4103366A2AF97AC900338414 /* Item.swift */,
 				4103366C2AF97ACC00338414 /* Assets.xcassets */,
 				410336712AF97ACC00338414 /* TicTacToe.entitlements */,
 				410336722AF97ACC00338414 /* Info.plist */,
@@ -107,10 +102,57 @@
 		410736F52B014B9100E931F9 /* TicTacToeTests */ = {
 			isa = PBXGroup;
 			children = (
-				410736F62B014B9200E931F9 /* TicTacToeTests.swift */,
-				410736FE2B014C4800E931F9 /* GameTests.swift */,
+				41F658082B03C2AC000CF5E8 /* Helper Extensions */,
+				41F658072B03C2A3000CF5E8 /* Helper Classes */,
+				41F658062B03C29E000CF5E8 /* Mocks */,
+				41F658052B03C294000CF5E8 /* Cases */,
 			);
 			path = TicTacToeTests;
+			sourceTree = "<group>";
+		};
+		41F658052B03C294000CF5E8 /* Cases */ = {
+			isa = PBXGroup;
+			children = (
+				41F658092B03C2C6000CF5E8 /* Group 1 */,
+			);
+			path = Cases;
+			sourceTree = "<group>";
+		};
+		41F658062B03C29E000CF5E8 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
+		41F658072B03C2A3000CF5E8 /* Helper Classes */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Helper Classes";
+			sourceTree = "<group>";
+		};
+		41F658082B03C2AC000CF5E8 /* Helper Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Helper Extensions";
+			sourceTree = "<group>";
+		};
+		41F658092B03C2C6000CF5E8 /* Group 1 */ = {
+			isa = PBXGroup;
+			children = (
+				41F6580A2B03C2D2000CF5E8 /* Tests 1 */,
+			);
+			path = "Group 1";
+			sourceTree = "<group>";
+		};
+		41F6580A2B03C2D2000CF5E8 /* Tests 1 */ = {
+			isa = PBXGroup;
+			children = (
+				410736FE2B014C4800E931F9 /* GameTests.swift */,
+			);
+			path = "Tests 1";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -214,7 +256,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				410336692AF97AC900338414 /* ContentView.swift in Sources */,
-				4103366B2AF97AC900338414 /* Item.swift in Sources */,
 				410336672AF97AC900338414 /* TicTacToeApp.swift in Sources */,
 				4191F3EB2B01227E0081DED3 /* Game.swift in Sources */,
 			);
@@ -224,7 +265,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				410736F72B014B9200E931F9 /* TicTacToeTests.swift in Sources */,
 				410736FF2B014C4800E931F9 /* GameTests.swift in Sources */,
 				410736FD2B014BF600E931F9 /* Game.swift in Sources */,
 			);

@@ -13,7 +13,8 @@
       "containerPath" : "container:TicTacToe.xcodeproj",
       "identifier" : "410336622AF97AC900338414",
       "name" : "TicTacToe"
-    }
+    },
+    "testExecutionOrdering" : "random"
   },
   "testTargets" : [
     {
