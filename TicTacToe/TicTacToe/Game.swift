@@ -19,14 +19,30 @@ enum TicTacToeError: Error {
 enum Mark: CustomStringConvertible {
   case none, x, o
 
+  init(stringLiteral value: String) {
+    guard value.count == 1 else {
+      fatalError("Invalid string literal: \(value)")
+    }
+    switch value.first {
+    case "-": 
+      self = Mark.none
+    case "X","x":
+      self = Mark.x
+    case "O", "o":
+      self = Mark.o
+    default:
+      fatalError("Invalid string literal: \(value)")
+    }
+  }
+
   var description: String {
     switch self {
     case .none:
-       return "-"
+      return "-"
     case .x:
-       return "X"
+      return "X"
     case .o:
-       return "O"
+      return "O"
     }
   }
 
@@ -54,7 +70,7 @@ enum Status: Equatable {
   case draw
 }
 
-struct Coordinate: CustomStringConvertible  {
+struct Coordinate: CustomStringConvertible {
   let row: Int
   let column: Int
 
@@ -67,28 +83,39 @@ struct Coordinate: CustomStringConvertible  {
   }
 }
 
-struct Game {
+extension Coordinate: ExpressibleByStringLiteral {
+  init(stringLiteral value: String) {
+    let components = value.split(separator: ",").compactMap { Int($0) }
+    guard components.count == 2 else {
+      fatalError("Invalid coordinate string literal: \(value)")
+    }
+    self.row = components[0]
+    self.column = components[1]
+  }
+}
+
+struct Game: CustomStringConvertible {
 
   var board: [Mark]!
+  weak var delegate: GameDelegate?
+
+  var description: String {
+
+    let rows = stride(from: 0, to: board.count, by: size).map { Array(board[$0..<$0+size]) }
+
+    let boardString = rows.map { row in
+      row.map { String(describing: $0) }.joined(separator: " | ")
+    }.joined(separator: "\n---------\n")
+
+    return boardString
+  }
+
   let size: Int!
   var markByTurn: Mark!
   var playCount = 0
   var status = Status.ready
   var lastMove: Coordinate?
 
-  //  public var description: String {
-  //    var boardString = ""
-  //    for i in 0..<size {
-  //      var line = "/n"
-  //      for j in 0..<size {
-  //        line += "\(board[size*i+j%size])"
-  //      }
-  //      boardString += line
-  //    }
-  //    return boardString
-  //  }
-
-  // Convenience initializer to always create a game with board size 3
   init() {
     try! self.init(size: 3)
   }
@@ -101,8 +128,6 @@ struct Game {
     self.board = Array(repeating: .none, count: size*size)// Classical Game
     self.markByTurn = Mark.x
   }
-
-
 
   mutating func put(_ mark: Mark, at coordinate: Coordinate) throws {
     guard isValid(coordinate) else {
@@ -133,10 +158,15 @@ struct Game {
   mutating func putNextMark(at coordinate: Coordinate) throws {
     guard status == .ready || status == .inProgress else { throw TicTacToeError.gameAlreadyFinished }
     try put(markByTurn, at: coordinate)
+    playCount += 1
+    delegate?.lastMark(markByTurn, at: coordinate)
     markByTurn.toogle()
     lastMove = coordinate
-    playCount += 1
     updateStatus(afterMove: coordinate)
+    delegate?.statusAfterLastMove(status)
+    NotificationCenter.default.post(name: .gameDidMakeMove, object: self, userInfo:
+                                      ["status": status]
+    )
   }
 
   func validateRow(afterMove coordinate: Coordinate, mark: Mark) -> Status {
@@ -193,7 +223,7 @@ struct Game {
     return Status.winner(mark)
   }
 
-  mutating func updateStatus(afterMove coordinate: Coordinate) {
+mutating func updateStatus(afterMove coordinate: Coordinate) {
 
     let lastMark = markByTurn.opposite
     status = validateRow(afterMove: coordinate, mark: lastMark)
@@ -221,3 +251,15 @@ struct Game {
     }
   }
 }
+
+
+protocol GameDelegate: AnyObject {
+  func statusAfterLastMove(_ status: Status)
+  func lastMark(_ mark: Mark, at coordinate: Coordinate)
+}
+
+// Notification name for the move status
+extension Notification.Name {
+    static let gameDidMakeMove = Notification.Name("GameDidMakeMoveNotification")
+}
+

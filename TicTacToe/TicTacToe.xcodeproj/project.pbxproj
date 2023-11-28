@@ -38,6 +38,7 @@
 		410736FE2B014C4800E931F9 /* GameTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameTests.swift; sourceTree = "<group>"; };
 		410737002B014C7C00E931F9 /* TicTacToe.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = TicTacToe.xctestplan; sourceTree = "<group>"; };
 		4191F3EA2B01227E0081DED3 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
+		41F6580C2B03DEE8000CF5E8 /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +62,7 @@
 		4103365A2AF97AC900338414 = {
 			isa = PBXGroup;
 			children = (
+				41F6580C2B03DEE8000CF5E8 /* MyPlayground.playground */,
 				410737002B014C7C00E931F9 /* TicTacToe.xctestplan */,
 				410336652AF97AC900338414 /* TicTacToe */,
 				410736F52B014B9100E931F9 /* TicTacToeTests */,
